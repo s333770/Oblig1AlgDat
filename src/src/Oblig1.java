@@ -6,7 +6,7 @@ public class Oblig1 {
     // Lager et globalt test-Array:
     private static int [] testArray={4,51,1,3,7,10,17,2};
     private static int [] sortertArray={1,2,3,4,7,10,17,51};
-    private static int[] sortertGjentatt={1,1,1,2,2,2,4,4,10,10,51};
+    private static int[] sortertGjentatt={1,1,4,4,10,10,51};
     public int testArrayLengde=testArray.length;
 
     public static int maks(int [] a){
@@ -41,31 +41,33 @@ public class Oblig1 {
 
     }
     public static int antallUlikeSortert(int [] a){
-        int str=sortertGjentatt.length;
-        int [] arrayMedVerdier=new int[str];
-        int teller=0;
-        for (int i=0; i<a.length; i++){
-            if(a[i]>a[i+1]){
+        int teller=1;
+        for(int x=0; x<a.length-1;x++){
+            if(a[x]>a[x+1]){
                 throw new IllegalStateException("Arrayen er ikke sortert");
             }
-            for(int j=0;j<i; j++){
-                if(a[i]==a[j]){
+        }
+        for (int i=1; i<a.length; i++){
+            int j=0;
+            for(j=0;j<i; j++) {
+                if (a[i] == a[j]) {
                     break;
                 }
-                if(i==j){
-
-                }
             }
+                if(i==j){
+                    teller++;
+                }
         }
         System.out.println(teller);
-    return teller;
-
+        return teller;
     }
+
+
 
     public static void main(String[] args) {
        // Oblig1.maks(testArray); //Denne koden fungerer nå
        // Oblig1.ombyttinger(testArray); // Denne koden fungerer nå
-        Oblig1.antallUlikeSortert(sortertGjentatt);
+       Oblig1.antallUlikeSortert(sortertGjentatt);
     }
 
 }
