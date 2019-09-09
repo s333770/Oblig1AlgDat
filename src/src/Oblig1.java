@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
+import static java.lang.Math.abs;
+
 public class Oblig1 {
 
     // Lager et globalt test-Array:
@@ -13,6 +15,14 @@ public class Oblig1 {
      private static int [] getOppgave4Array2={5,4,10,1,3,7,10};
      public String tall="abcdefghijklmnopq";
      private static char[] oppgave5Tekst={'a','b','c','d','e'};
+     private static char []oppgave6Tekst={'A','B','C','D','E','F','G','H','I','J'};
+     private static String a= "ABC";
+     private static String b="DEFGH";
+     private static String c="IJKLMN";
+        private static String d="OPG";
+        private static String e="AB";
+       private static  String algdat[]={"AM","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
+
 
     public static int maks(int [] a){
         if(a.length<1){
@@ -142,6 +152,69 @@ public class Oblig1 {
             System.out.println(Arrays.toString(a));
         }
 
+    //Oppgave 6
+        public static void rotasjon(char [] a, int k){
+        char temp, sisteTall,forsteTall;
+        if(k>0){
+            k=abs(k)%10;// FOr å kunne bruke store tall
+            for(int i=0; i<k; i++){
+                sisteTall=a[a.length-1];
+                for(int j=0;j<a.length;j++){
+                    temp=a[j];
+                    a[j]=sisteTall;
+                    sisteTall=temp;
+                }
+            }
+            System.out.println(Arrays.toString(a));
+        }
+        if(k<0){
+            k=abs(k)%10;// FOr å kunne bruke store tall
+            for(int i=0;i<k;i++){
+                forsteTall=a[0];
+                for(int j=a.length-1; j>=0; j--){
+                    temp=a[j];
+                    a[j]=forsteTall;
+                    forsteTall=temp;
+                }
+            }
+
+            System.out.println(Arrays.toString(a));
+        }
+        }
+
+//Må se litt mer på dette
+
+    // Oppgave 7
+    public static String flett(String s, String t){
+        String output="";
+        if(s.length()<=0 || t.length()<=0){
+            throw new IllegalArgumentException("En av strengene er tomme");
+        }
+        for( int i=0; i<s.length() || i<t.length(); i++){
+            if(i<s.length()){
+                output+= String.valueOf(s.charAt(i));
+            }
+            if(i<t.length()){
+                output+=String.valueOf(t.charAt(i));
+            }
+        }
+        System.out.println(output);
+        return output;
+    }
+
+    // Oppgave 7 B
+    public static String flettEnString(String [] st){
+        String output="";
+        for(int i=0; i<st.length; i++){
+            for(int j=0; j<st[i].length();j++){
+                while
+                    output+=String.valueOf(st[i].charAt(j));
+            }
+        }
+        System.out.println(output);
+        return output;
+    }
+
 
 
 
@@ -152,7 +225,11 @@ public class Oblig1 {
        //Oblig1.antallUlikeIkkeSortert(sortertGjentatt);
       //Oblig1.delsortering(getOppgave4Array2);
         //Oblig1.rotasjon(oppgave5Tekst);
-        Oblig1.rotasjonMedIndividuelleElementer(oppgave5Tekst);
+        //Oblig1.rotasjonMedIndividuelleElementer(oppgave5Tekst);
+        //Oblig1.rotasjon(oppgave6Tekst,-2);
+        //Oblig1.flett(a,b);
+        Oblig1.flettEnString(algdat);
+
     }
 
 }
