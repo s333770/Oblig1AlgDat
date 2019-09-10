@@ -258,16 +258,24 @@ public class Oblig1 {
     public static boolean inneholdt(String s1,String s2){
         char [] karakterer1=s1.toCharArray();
         char [] karakterer2=s2.toCharArray();
-
         //Så må vi sortere rett :
-
-
-
-
-
         return true;
     }
 
+    public static char[] sortCharArray (char [] a){
+        char[] indexer = new char[a.length];
+        for(int i=1;i<a.length;i++){
+            int j=i;
+            for(;j>=1 && a[j]<a[j-1];j--){
+                char temp = a[j];
+                a[j] = a[j-1];
+                indexer[j]=indexer[j-1];
+                a[j-1] = temp;
+            }
+        }
+        System.out.println(Arrays.toString(a));
+        return a;
+    }
 
 
     public static void main(String[] args) {
@@ -284,7 +292,8 @@ public class Oblig1 {
        // Oblig1.rotasjonHoyreVenstre(oppgave6Tekst,-8);
         //Oblig1.flettEnString(algdat);
        // Oblig1.indekssortering(oppgave8);
-
+        char [] afsa= {'B','A','G','D'};
+        Oblig1.sortCharArray(afsa);
 
     }
 
