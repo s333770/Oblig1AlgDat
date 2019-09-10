@@ -22,6 +22,7 @@ public class Oblig1 {
         private static String d="OPG";
         private static String e="AB";
        private static  String algdat[]={"AM","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
+       private static int [] oppgave8= {6,10,16,11,7,12,3,9,8,5};
 
 
     public static int maks(int [] a){
@@ -153,6 +154,23 @@ public class Oblig1 {
         }
 
     //Oppgave 6
+    public static void rotasjonHoyreVenstre(char[] a, int k)
+    {
+        int n = a.length;  if (n < 2) return;
+        if ((k %= n) < 0){
+            k += n;
+        }
+
+        char[] b = Arrays.copyOfRange(a, n -k, n);
+        for (int i = n - 1; i >= k; i--) {
+            a[i] = a[i - k];
+        }
+        System.arraycopy(b, 0, a, 0, k);
+        System.out.println(a);
+    }
+
+
+    /*
         public static void rotasjon(char [] a, int k){
         char temp, sisteTall,forsteTall;
         if(k>0){
@@ -181,7 +199,7 @@ public class Oblig1 {
             System.out.println(Arrays.toString(a));
         }
         }
-
+*/
 //Må se litt mer på dette
 
     // Oppgave 7
@@ -204,17 +222,51 @@ public class Oblig1 {
 
     // Oppgave 7 B
     public static String flettEnString(String [] st){
+        int lengde= st.length;
         String output="";
+        int x=0;
         for(int i=0; i<st.length; i++){
-            for(int j=0; j<st[i].length();j++){
-                while
+
+          for(int j=0; j<st[i].length();j++){
                     output+=String.valueOf(st[i].charAt(j));
             }
         }
+
+
         System.out.println(output);
         return output;
+        // Må se litt mer på denne
+    }
+    public static int[] indekssortering(int []a) { // Bruker først insertionsort
+        int[] indexer = new int[a.length];
+        for(int i=1;i<a.length;i++){
+            int j=i;
+            for(;j>=1 && a[j]<a[j-1];j--){
+                int temp = a[j];
+                a[j] = a[j-1];
+                indexer[j]=indexer[j-1];
+                a[j-1] = temp;
+            }
+            indexer[j]=i;
+        }
+        System.out.println(Arrays.toString(indexer));
+
+        return indexer;//indices of sorted elements
     }
 
+    //Oppgave 10, sjekk s1 mot s2
+    public static boolean inneholdt(String s1,String s2){
+        char [] karakterer1=s1.toCharArray();
+        char [] karakterer2=s2.toCharArray();
+
+        //Så må vi sortere rett :
+
+
+
+
+
+        return true;
+    }
 
 
 
@@ -228,7 +280,11 @@ public class Oblig1 {
         //Oblig1.rotasjonMedIndividuelleElementer(oppgave5Tekst);
         //Oblig1.rotasjon(oppgave6Tekst,-2);
         //Oblig1.flett(a,b);
-        Oblig1.flettEnString(algdat);
+       // Oblig1.flettEnString(algdat);
+       // Oblig1.rotasjonHoyreVenstre(oppgave6Tekst,-8);
+        //Oblig1.flettEnString(algdat);
+       // Oblig1.indekssortering(oppgave8);
+
 
     }
 
