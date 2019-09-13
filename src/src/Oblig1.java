@@ -2,15 +2,42 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 import static java.lang.Math.abs;
 
 public class Oblig1 {
 
+
+ private static int[] randPerm(int n)  // virker, men er svært ineffektiv
+  {
+    Random r = new Random();      // en randomgenerator
+      int a [] =new int [n];
+      for(int i=0; i<n; i++) {
+          int k = r.nextInt() + 1;
+          for (int j = 0; j < i; j++) {
+              if (a[j] == k) {
+                  break;
+              }
+              if (i == j) {
+                  a[i++] = k;
+
+              }
+          }
+      }
+                return a;
+  }
+
+
+
     // Lager et globalt test-Array:
+    //Oppgave 1
     private static int [] testArray={4,51,1,3,7,10,17,2};
+    private static int [] generert= Oblig1.randPerm(1000); // Se litt mer på generering av array
+
     private static int [] sortertArray={1,2,3,4,7,10,17,51};
     private static int[] sortertGjentatt={1,1,4,4,10,10,51,51,98};
+    private static int[] ikkeSortertGjentatt={4,4,1,1,3,10,10,98,51,98};
      private static int [] oppgave4Array = {6,10,9,4,1,3,8,5,2,7};
      private static int [] getOppgave4Array2={5,4,10,1,3,7,10};
      public String tall="abcdefghijklmnopq";
@@ -24,7 +51,7 @@ public class Oblig1 {
        private static  String algdat[]={"AM","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
        private static int [] oppgave8= {6,10,16,11,7,12,3,9,8,5};
 
-
+//Oppgave 1
     public static int maks(int [] a){
         if(a.length<1){
             throw new NoSuchElementException("Tabellen er tom");
@@ -35,13 +62,15 @@ public class Oblig1 {
                 a[i]=a[i+1];
                 a[i+1]=temp;
             }
-
         }
         System.out.println(a[a.length-1]);
         return a[a.length-1];
     }
 
     public static int ombyttinger(int []a){
+        if(a.length<1){
+            throw new NoSuchElementException("Tabellen er tom");
+        }
         int antallOmbyttinger=0;
         for(int j=0; j<a.length-1;j++){
             if(a[j]>a[j+1]){
@@ -56,7 +85,7 @@ public class Oblig1 {
         return antallOmbyttinger;
 
     }
-
+        //Oppgave 2
     public static int antallUlikeSortert(int [] a){
         int teller=1;
         for(int x=0; x<a.length-1;x++){
@@ -72,6 +101,7 @@ public class Oblig1 {
         System.out.println(teller);
         return teller;
     }
+    //Oppgave 3
     public static int antallUlikeIkkeSortert(int [] a){
         int teller=1;
         for (int i=1; i<a.length; i++){
@@ -257,9 +287,14 @@ public class Oblig1 {
     //Oppgave 10, sjekk s1 mot s2
     public static boolean inneholdt(String s1,String s2){
         char [] karakterer1=s1.toCharArray();
-        char [] karakterer2=s2.toCharArray();
-        //Så må vi sortere rett :
+        for(int i=0; i<s1.length(); i++){
+            char k= s1.charAt(i);
+            if(s2.indexOf(k)==-1){//Retunerer indeksen til tallet, hvis tallet ikke eksisterer returner -1
+                return false;
+            }
+        }
         return true;
+
     }
 
     public static char[] sortCharArray (char [] a){
@@ -279,10 +314,10 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-       // Oblig1.maks(testArray); //Denne koden fungerer nå
-       // Oblig1.ombyttinger(testArray); // Denne koden fungerer nå
+        //Oblig1.maks(generert); //Denne koden fungerer nå
+        //Oblig1.ombyttinger(generert); // Denne koden fungerer nå
         //Oblig1.antallUlikeSortert(sortertGjentatt);
-       //Oblig1.antallUlikeIkkeSortert(sortertGjentatt);
+       Oblig1.antallUlikeIkkeSortert(ikkeSortertGjentatt);
       //Oblig1.delsortering(getOppgave4Array2);
         //Oblig1.rotasjon(oppgave5Tekst);
         //Oblig1.rotasjonMedIndividuelleElementer(oppgave5Tekst);
@@ -292,8 +327,8 @@ public class Oblig1 {
        // Oblig1.rotasjonHoyreVenstre(oppgave6Tekst,-8);
         //Oblig1.flettEnString(algdat);
        // Oblig1.indekssortering(oppgave8);
-        char [] afsa= {'B','A','G','D'};
-        Oblig1.sortCharArray(afsa);
+        //System.out.println(Oblig1.inneholdt("ABBC", "BABB"));
+
 
     }
 
