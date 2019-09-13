@@ -48,7 +48,7 @@ public class Oblig1 {
      private static String c="IJKLMN";
         private static String d="OPG";
         private static String e="AB";
-       private static  String algdat[]={"AM","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
+       private static  String algdat[]={"AM","LL","GEDS","ORATKRR","WL","R TRTE","IO","TGAUU"};
        private static int [] oppgave8= {6,10,16,11,7,12,3,9,8,5};
 
 //Oppgave 1
@@ -200,38 +200,6 @@ public class Oblig1 {
     }
 
 
-    /*
-        public static void rotasjon(char [] a, int k){
-        char temp, sisteTall,forsteTall;
-        if(k>0){
-            k=abs(k)%10;// FOr å kunne bruke store tall
-            for(int i=0; i<k; i++){
-                sisteTall=a[a.length-1];
-                for(int j=0;j<a.length;j++){
-                    temp=a[j];
-                    a[j]=sisteTall;
-                    sisteTall=temp;
-                }
-            }
-            System.out.println(Arrays.toString(a));
-        }
-        if(k<0){
-            k=abs(k)%10;// FOr å kunne bruke store tall
-            for(int i=0;i<k;i++){
-                forsteTall=a[0];
-                for(int j=a.length-1; j>=0; j--){
-                    temp=a[j];
-                    a[j]=forsteTall;
-                    forsteTall=temp;
-                }
-            }
-
-            System.out.println(Arrays.toString(a));
-        }
-        }
-*/
-//Må se litt mer på dette
-
     // Oppgave 7
     public static String flett(String s, String t){
         String output="";
@@ -252,17 +220,17 @@ public class Oblig1 {
 
     // Oppgave 7 B
     public static String flettEnString(String [] st){
-        int lengde= st.length;
         String output="";
         int x=0;
-        for(int i=0; i<st.length; i++){
+        int y=0;
+        for(int i=0; i<st.length; i++) {
+            while (st[i].length() > x) {
+                output += st[i].charAt(x);
 
-          for(int j=0; j<st[i].length();j++){
-                    output+=String.valueOf(st[i].charAt(j));
             }
-        }
 
-
+            }
+        x++;
         System.out.println(output);
         return output;
         // Må se litt mer på denne
@@ -328,8 +296,7 @@ public class Oblig1 {
         //Oblig1.flettEnString(algdat);
        // Oblig1.indekssortering(oppgave8);
         //System.out.println(Oblig1.inneholdt("ABBC", "BABB"));
-
-
+        Oblig1.flettEnString(algdat);
     }
 
 }
