@@ -7,14 +7,15 @@ import java.util.Random;
 import static java.lang.Math.abs;
 
 public class Oblig1 {
+
     private static int[] randPerm(int n)  // virker, men er svært ineffektiv
     {
         Random r = new Random();
-        int a [] =new int [n];
-        for(int i=0; i<n; i++) {
+        int a[] = new int[n];
+        for (int i = 0; i < n; i++) {
             a[i] = r.nextInt(n) + 1;
-            for(int j=0; j<i; j++){
-                if(a[i]==a[j]){
+            for (int j = 0; j < i; j++) {
+                if (a[i] == a[j]) {
                     i--;
                     break;
                 }
@@ -23,43 +24,24 @@ public class Oblig1 {
         System.out.println(Arrays.toString(a));
         return a;
     }
-    private static int[] randPermBoolean(int n){ //Kopiert fra boken for generering av testverdier
-        Random r= new Random();
-        int []a =new int[n];
-        boolean [] har = new boolean[n];
 
-        for(int i=0; i<n;){
-            int k=r.nextInt(n);
-            if(har[k]==false){
-                har[k]=true;
-                a[i++]=k+1;
+    private static int[] randPermBoolean(int n) { //Kopiert fra boken for generering av testverdier
+        Random r = new Random();
+        int[] a = new int[n];
+        boolean[] har = new boolean[n];
+
+        for (int i = 0; i < n; ) {
+            int k = r.nextInt(n);
+            if (har[k] == false) {
+                har[k] = true;
+                a[i++] = k + 1;
             }
         }
         System.out.println(Arrays.toString(a));
         return a;
     }
 
-    // Lager et globalt test-Array:
-    //Oppgave 1
-    private static int [] testArray={4,51,1,3,7,10,17,2};
-    // Oppgave 2
-    private static int [] sortertArray={1,2,3,4,7,10,17,51};
-    private static int [] tomArray={};
 
-    private static int[] sortertGjentatt={1,1,4,4,10,10,51,51,98,98,100,1000,1000};
-    private static int[] ikkeSortertGjentatt={4,4,1,1,3,10,10,98,51,98};
-     private static int [] oppgave4Array = {6,10,9,4,1,3,8,5,2,7};
-     private static int [] getOppgave4Array2={5,4,10,1,3,7,10,-3,-6};
-     public String tall="abcdefghijklmnopq";
-     private static char[] oppgave5Tekst={'a','b','c','d','e'};
-     private static char []oppgave6Tekst={'A','B','C','D','E','F','G','H','I','J'};
-     private static String a= "ABC";
-     private static String b="DEFGH";
-     private static String c="IJKLMN";
-     private static String d="OPG";
-     private static String e="AB";
-     private static  String algdat[]={"AM","L","GEDS","ORATKRR","","R TRTE","IO","TGAUU"};
-     private static int [] oppgave8= {6,10,16,11,7,12,3,9,8,5};
 
 //Oppgave 1
     /*
@@ -69,31 +51,31 @@ public class Oblig1 {
 
      */
 
-    public static int maks(int [] a){
-        if(a.length<1){
+    public static int maks(int[] a) {
+        if (a.length < 1) {
             throw new NoSuchElementException("Tabellen er tom");
         }
-        for(int i=0; i<a.length-1;i++){
-            if(a[i]>a[i+1]){
-                int temp=a[i];
-                a[i]=a[i+1];
-                a[i+1]=temp;
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
             }
         }
-        System.out.println(a[a.length-1]);
-        return a[a.length-1];
+        System.out.println(a[a.length - 1]);
+        return a[a.length - 1];
     }
 
-    public static int ombyttinger(int []a){
-        if(a.length<1){
+    public static int ombyttinger(int[] a) {
+        if (a.length < 1) {
             throw new NoSuchElementException("Tabellen er tom");
         }
-        int antallOmbyttinger=0;
-        for(int j=0; j<a.length-1;j++){
-            if(a[j]>a[j+1]){
-                int temp=a[j];
-                a[j]=a[j+1];
-                a[j+1]=temp;
+        int antallOmbyttinger = 0;
+        for (int j = 0; j < a.length - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                int temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
                 antallOmbyttinger++;
             }
 
@@ -102,42 +84,44 @@ public class Oblig1 {
         return antallOmbyttinger;
 
     }
-        //Oppgave 2
-    public static int antallUlikeSortert(int [] a){
-        int teller=1;
-        if(a.length==0){
+
+    //Oppgave 2
+    public static int antallUlikeSortert(int[] a) {
+        int teller = 1;
+        if (a.length == 0) {
             return 0;
         }
-        for(int x=0; x<a.length-1;x++){
-            if(a[x]>a[x+1]){
+        for (int x = 0; x < a.length - 1; x++) {
+            if (a[x] > a[x + 1]) {
                 throw new IllegalStateException("Arrayen er ikke sortert");
             }
         }
 
-        for(int x=0;x<a.length-1;x++){
-            if(a[x]!=a[x+1]){
+        for (int x = 0; x < a.length - 1; x++) {
+            if (a[x] != a[x + 1]) {
                 teller++;
             }
         }
         System.out.println(teller);
         return teller;
     }
+
     //Oppgave 3
-    public static int antallUlikeIkkeSortert(int [] a){
-        int teller=1;
-        if(a.length==0){
+    public static int antallUlikeIkkeSortert(int[] a) {
+        int teller = 1;
+        if (a.length == 0) {
             return 0;
         }
-        for (int i=1; i<a.length; i++){
-            int j=0;
-            for(j=0;j<i; j++) {
+        for (int i = 1; i < a.length; i++) {
+            int j = 0;
+            for (j = 0; j < i; j++) {
                 if (a[i] == a[j]) {
                     break;
                 }
             }
-                if(i==j){
-                    teller++;
-                }
+            if (i == j) {
+                teller++;
+            }
         }
         System.out.println(teller);
         return teller;
@@ -194,79 +178,81 @@ public class Oblig1 {
        }
 }
      */
-    public static void delsortering(int [] a){
+    public static int[] delsortering(int[] a) {
 
         //Gjør først oppdeling av par og oddetall
-        int start=0, slutt=a.length-1;
-        int oddetallTeller=0;
-        while(start<slutt){
-            while(a[start]%2==0){
+        int start = 0, slutt = a.length - 1;
+        int oddetallTeller = 0;
+        while (start < slutt) {
+            while (a[start] % 2 == 1) {
                 start++;
             }
-            while(a[slutt]%2==1){
+            while (a[slutt] % 2 == 0) {
                 oddetallTeller++;
                 slutt--;
             }
-            if(start<slutt){
-                int temp=a[start];
-                a[start]=a[slutt];
-                a[slutt]=temp;
+            if (start < slutt) {
+                int temp = a[start];
+                a[start] = a[slutt];
+                a[slutt] = temp;
                 start++;
                 slutt--;
             }
         }
 
-        for(int i=0; i<oddetallTeller; i++){
-            int temp=a[i];
-            int j=i;
-            while(j>0 && temp <a[j-1]){
-                a[j]=a[j-1];
-                j=j-1;
+        for (int i = 0; i < oddetallTeller; i++) {
+            int temp = a[i];
+            int j = i;
+            while (j > 0 && temp < a[j - 1]) {
+                a[j] = a[j - 1];
+                j = j - 1;
             }
-            a[j]=temp;
+            a[j] = temp;
         }
-        for(int j=oddetallTeller+1; j<a.length; j++){
-            int temp=a[j];
-            int x=j;
-            while(x>0 && temp <a[x-1]){
-                a[x]=a[x-1];
-                x=x-1;
+        for (int j = oddetallTeller + 1; j < a.length; j++) {
+            int temp = a[j];
+            int x = j;
+            while (x > 0 && temp < a[x - 1]) {
+                a[x] = a[x - 1];
+                x = x - 1;
             }
-            a[x]=temp;
+            a[x] = temp;
+        }
+        System.out.println(Arrays.toString(a));
+        return a;
+    }
+
+    public static void rotasjon(char[] a) {
+        char[] rotertArray = new char[a.length];
+        int j = 0;
+        for (int i = a.length - 1; i >= 0; i--) {
+            rotertArray[j] = a[i];
+            j++;
+        }
+        System.out.println(Arrays.toString(rotertArray));
+    }
+
+    //Mye bedre og mer effektiv
+    public static void rotasjonMedIndividuelleElementer(char[] a) {
+        int j = 0;
+        for (int i = a.length - 1; i > ((a.length) / 2); i--) {
+            char temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            j++;
         }
         System.out.println(Arrays.toString(a));
     }
 
-        public static void rotasjon(char[] a){
-        char[] rotertArray= new char [a.length];
-        int j=0;
-        for(int i=a.length-1; i>=0;i--){
-            rotertArray[j]=a[i];
-            j++;
-        }
-            System.out.println(Arrays.toString(rotertArray));
-        }
-//Mye bedre og mer effektiv
-        public static void rotasjonMedIndividuelleElementer(char []a){
-            int j=0;
-            for(int i=oppgave5Tekst.length-1;i>((oppgave5Tekst.length)/2); i--){
-                char temp=a[i];
-                      a[i]=a[j];
-                      a[j]=temp;
-                      j++;
-            }
-            System.out.println(Arrays.toString(a));
-        }
-
     //Oppgave 6
-    public static void rotasjonHoyreVenstre(char[] a, int k)
-    {
-        int n = a.length;  if (n < 2) return;
-        if ((k %= n) < 0){
+    public static void rotasjonHoyreVenstre(char[] a, int k) {
+        int n = a.length;
+        if (n < 2) return;
+        if ((k %= n) < 0) {
             k += n;
         }
 
-        char[] b = Arrays.copyOfRange(a, n -k, n);
+        char[] b = Arrays.copyOfRange(a, n - k, n);
         for (int i = n - 1; i >= k; i--) {
             a[i] = a[i - k];
         }
@@ -276,48 +262,32 @@ public class Oblig1 {
 
 
     // Oppgave 7
-    public static String flett(String s, String t){
-        String output="";
-        if(s.length()<=0 || t.length()<=0){
+    public static String flett(String s, String t) {
+        String output = "";
+        if (s.length() <= 0 || t.length() <= 0) {
             throw new IllegalArgumentException("En av strengene er tomme");
         }
-        for( int i=0; i<s.length() || i<t.length(); i++){
-            if(i<s.length()){
-                output+= String.valueOf(s.charAt(i));
+        for (int i = 0; i < s.length() || i < t.length(); i++) {
+            if (i < s.length()) {
+                output += String.valueOf(s.charAt(i));
             }
-            if(i<t.length()){
-                output+=String.valueOf(t.charAt(i));
+            if (i < t.length()) {
+                output += String.valueOf(t.charAt(i));
             }
         }
         System.out.println(output);
         return output;
     }
 
-    // Oppgave 7 B
-    public static String flettEnString2(String [] st){
-        String output="";
-        int x=0;
-        int y=0;
-        for(int i=0; i<st.length; i++) {
-            while (st[i].length() > x) {
-                output += st[i].charAt(x);
 
-            }
 
-            }
-        x++;
-        System.out.println(output);
-        return output;
-        // Må se litt mer på denne
-    }
-
-    public static String flettEnString(String[] s){ // Ingen eller flere elementer
-        String ut="";
-        int []arr=new int [s.length];
-        for(int i=0; i<s.length; i++){
-            for(int j=0; j<s.length;j++){
-                if(arr[j]<s[j].length()){
-                    ut+=s[j].toCharArray()[arr[j]];
+    public static String flettEnString(String[] s) { // Ingen eller flere elementer
+        String ut = "";
+        int[] arr = new int[s.length];
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < s.length; j++) {
+                if (arr[j] < s[j].length()) {
+                    ut += s[j].toCharArray()[arr[j]];
                     arr[j]++;
                 }
             }
@@ -327,18 +297,17 @@ public class Oblig1 {
     }
 
 
-
-    public static int[] indekssortering(int []a) { // Bruker først insertionsort
+    public static int[] indekssortering(int[] a) {
         int[] indexer = new int[a.length];
-        for(int i=1;i<a.length;i++){
-            int j=i;
-            for(;j>=1 && a[j]<a[j-1];j--){
+        for (int i = 1; i < a.length; i++) {
+            int j = i;
+            for (; j >= 1 && a[j] < a[j - 1]; j--) {
                 int temp = a[j];
-                a[j] = a[j-1];
-                indexer[j]=indexer[j-1];
-                a[j-1] = temp;
+                a[j] = a[j - 1];
+                indexer[j] = indexer[j - 1];
+                a[j - 1] = temp;
             }
-            indexer[j]=i;
+            indexer[j] = i;
         }
         System.out.println(Arrays.toString(indexer));
 
@@ -348,44 +317,149 @@ public class Oblig1 {
     //Oppgave9
     public static int[] tredjeMin(int[] a) // ny versjon
     {
-        int n = a.length;     // tabellens lengde
-        if (n < 3) throw      // må ha minst to verdier
-                new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
-
-        int m = 0;      // m er posisjonen til største verdi
-        int nm = 1;     // nm er posisjonen til nest største verdi
-        int nnm=2;      //Posisjonen til tredje største verdi
-
-        // bytter om m og nm hvis a[1] er større enn a[0]
-        if (a[1] > a[0]) { m = 1; nm = 0; }
-
-        int maksverdi = a[m];                // største verdi
-        int nestmaksverdi = a[nm];           // nest største verdi
-
-        for (int i = 2; i < n; i++)
-        {
-            if (a[i] > nestmaksverdi)
-            {
-                if (a[i] > maksverdi)
-                {
-                    nm = m;
-                    nestmaksverdi = maksverdi;     // ny nest størst
-
-                    m = i;
-                    maksverdi = a[m];              // ny størst
-                }
-                else
-                {
-                    nm = i;
-                    nestmaksverdi = a[nm];         // ny nest størst
-                }
+        int[] returTabell = new int[3];
+        int i, storste, nestStorste, tredjeStorste;
+        if (a.length < 3) {
+            throw new IndexOutOfBoundsException("For liten array");
+        }
+        storste = nestStorste = tredjeStorste = Integer.MIN_VALUE;
+        for (i = 0; i < a.length - 1; i++) {
+            if (a[i] > storste) {
+                tredjeStorste = nestStorste;
+                nestStorste = storste;
+                storste = a[i];
+            } else if (a[i] > nestStorste) {
+                tredjeStorste = nestStorste;
+                nestStorste = a[i];
+            } else if (a[i] > tredjeStorste) {
+                tredjeStorste = a[i];
             }
-        } // for
+            returTabell[0] = storste;
+            returTabell[1] = nestStorste;
+            returTabell[2] = tredjeStorste;
+        }
+        System.out.println(storste + " " + nestStorste + " " + tredjeStorste);
+        return returTabell;
 
-        return new int[] {m,nm};    // n i posisjon 0, nm i posisjon 1
-
-    } // nestMaks
     }
+
+    public static int[] tredjeMin213(int[] a) // ny versjon
+    {
+        int minverdi=0;
+        int nestMaksverdi=0;
+        int tredjeMaksverdi=0;
+        int[] returTabell = new int[3];
+        if (a.length < 3) {
+            throw new IndexOutOfBoundsException("For liten array");
+        }
+        if(a[2]>a[1] && a[2]>a[0]&&a[1]>a[0]){ //a2 a1 a0
+            maksverdi=a[2];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[0];
+        }
+        else if(a[2]>a[1]&&a[2]>a[0]&&a[1]<a[0]){ //a2 a0 a1
+             maksverdi=a[2];
+             nestMaksverdi=a[0];
+             tredjeMaksverdi=a[1];
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[2]>a[0]){ // a1 a2 a0
+            maksverdi=a[1];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[0];
+
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[0]>a[2]){ //a1 a0 a2
+            maksverdi=a[1];
+            nestMaksverdi=a[0];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]<a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a1 a2
+            maksverdi=a[0];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]>a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a2 a1
+            maksverdi=a[0];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[1];
+        }
+        for(int i=3; i<a.length;i++){
+            if(a[i]>tredjeMaksverdi){
+                if(a[i]>nestMaksverdi){
+                    if(a[i]>maksverdi){
+                        tredjeMaksverdi=nestMaksverdi;
+                        nestMaksverdi=maksverdi;
+                        maksverdi=a[i];
+                    }
+
+                }
+
+            }
+
+        }
+        System.out.println("Største tall "+maksverdi+" Nest største "+nestMaksverdi+" TredjeStørst "+tredjeMaksverdi);
+        return a;
+    }
+
+    public static int[] tredjeMin213(int[] a) // ny versjon
+    {
+        int maksverdi=0;
+        int nestMaksverdi=0;
+        int tredjeMaksverdi=0;
+        int[] returTabell = new int[3];
+        if (a.length < 3) {
+            throw new IndexOutOfBoundsException("For liten array");
+        }
+        if(a[2]>a[1] && a[2]>a[0]&&a[1]>a[0]){ //a2 a1 a0
+            maksverdi=a[2];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[0];
+        }
+        else if(a[2]>a[1]&&a[2]>a[0]&&a[1]<a[0]){ //a2 a0 a1
+            maksverdi=a[2];
+            nestMaksverdi=a[0];
+            tredjeMaksverdi=a[1];
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[2]>a[0]){ // a1 a2 a0
+            maksverdi=a[1];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[0];
+
+        }
+        else if(a[2]<a[1] && a[1]>a[0] && a[0]>a[2]){ //a1 a0 a2
+            maksverdi=a[1];
+            nestMaksverdi=a[0];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]<a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a1 a2
+            maksverdi=a[0];
+            nestMaksverdi=a[1];
+            tredjeMaksverdi=a[2];
+        }
+        else if(a[2]>a[1] && a[1]<a[0] && a[0]>a[2]){ //a0 a2 a1
+            maksverdi=a[0];
+            nestMaksverdi=a[2];
+            tredjeMaksverdi=a[1];
+        }
+        for(int i=3; i<a.length;i++){
+            if(a[i]>tredjeMaksverdi){
+                if(a[i]>nestMaksverdi){
+                    if(a[i]>maksverdi){
+                        tredjeMaksverdi=nestMaksverdi;
+                        nestMaksverdi=maksverdi;
+                        maksverdi=a[i];
+                    }
+
+                }
+
+            }
+
+        }
+        System.out.println("Største tall "+maksverdi+" Nest største "+nestMaksverdi+" TredjeStørst "+tredjeMaksverdi);
+        return a;
+    }
+
+
 
     //Oppgave 10, sjekk s1 mot s2
     public static boolean inneholdt(String s1,String s2){
@@ -417,7 +491,8 @@ public class Oblig1 {
 
 
     public static void main(String[] args) {
-       // int a[] = Oblig1.randPermBoolean(5);
+
+        //int a[] = Oblig1.randPermBoolean(1000);
         //Oblig1.ombyttinger(a);
         //Først generering av randomNumre:
         //Oblig1.maks(a); //Denne koden fungerer nå
@@ -434,10 +509,18 @@ public class Oblig1 {
         //Oblig1.flettEnString(algdat);
        // Oblig1.rotasjonHoyreVenstre(oppgave6Tekst,-8);
         //Oblig1.flettEnString(algdat);
-        System.out.println(Arrays.toString(oppgave8));
-        Oblig1.indekssortering(oppgave8);
+       // System.out.println(Arrays.toString(oppgave8));
+       // Oblig1.indekssortering(oppgave8);
         //System.out.println(Oblig1.inneholdt("ABBC", "BABB"));
-        //Oblig1.flettEnString(algdat);
+        String algdat[] = {"AM ", "L", "GEDS", "ORATKRR", "", "R TRTE", "IO", "TGAUU"};
+       int[] oppgave9={3,1,5,5,3,7,6,9,10};
+
+       // Oblig1.flettEnString(algdat);
+       // System.out.println(Arrays.toString(oppgave4Array));
+        Oblig1.tredjeMin213(oppgave9);
+        //Oblig1.tredjeMinAlternativ(oppgave9);
+        //int testArray4[]={4,1,2,3,5,10,11,12};
+        //Oblig1.delsortering(testArray4);
     }
 
 }
